@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CholloController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*Route::get('/', function () {
+    return view('chollos.index');
+});*/
+
+//Redirige al index pasando por el controlador
+Route::get('/', [CholloController::class, 'index']);
