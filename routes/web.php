@@ -20,3 +20,6 @@ use Illuminate\Support\Facades\Route;
 
 //Redirige al index pasando por el controlador
 Route::get('/', [CholloController::class, 'index']);
+
+//Comprobar si funciona más adelante
+//Route::resource('chollos', 'CholloController');
