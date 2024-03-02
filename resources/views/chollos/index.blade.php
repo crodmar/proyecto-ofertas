@@ -4,6 +4,7 @@
 @section('header', 'Administración de chollos')
 
 @section('content')
+<a href="{{ route('create') }}">Crear chollo</a>
     <div>
         @forelse($chollos as $chollo)
             <div>
@@ -16,8 +17,8 @@
                 {{ $chollo->precio_descuento }}
                 {{ $chollo->disponible }}
                 <img src="{{ asset('img/' . $chollo->id . '-chollo-ofertas.avif') }}">
-                <button>Ver</button>
-                <button>Editar</button>
+                <a href="{{ route('show', $chollo->id) }}">Ver</a>
+                <a href="{{ route('edit', $chollo->id) }}">Editar</a>
                 <button>Eliminar</button>
                 <br>
             </div>

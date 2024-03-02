@@ -3,16 +3,12 @@
 @section('title', 'Inserción de chollos')
 @section('header', 'Inserción de chollos')
 
-@section("content")
+@section('content')
 
     @isset($chollo)
-        <form action="{{ route('chollo.update', ['chollo' => $chollo->id]) }}" method="POST">
-        @method("PUT")
-    @else
-        <form action="{{ route('chollo.store') }}" method="POST">
-    @endisset
-
-        @csrf
+        <form action="{{ route('update', ['id' => $chollo->id]) }}" method="POST">
+            @method('PUT')
+            @csrf
             <label for="titulo">Producto:</label>
             <input type="text" name="titulo" value="{{ $chollo->titulo ?? '' }}"><br>
             <label for="descripcion">Descripción:</label>
@@ -31,4 +27,9 @@
             <input type="text" name="disponible" value="{{ $chollo->disponible ?? '' }}"><br>
             <input type="submit">
         </form>
+    @else
+        Error
+    @endisset
+
+
 @endsection

@@ -14,12 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('chollos.index');
-});*/
-
-//Redirige al index pasando por el controlador
-Route::get('/', [CholloController::class, 'index']);
-
-//Comprobar si funciona más adelante
-Route::resource('chollos', 'CholloController');
+Route::get('/', [CholloController::class, 'index']);//Redirige al index pasando por el controlador
+Route::get('/create', [CholloController::class, 'create'])->name('create');//Crear chollo
+Route::post('/', [CholloController::class, 'store'])->name('store');//Guardar chollo
+Route::get('/{id}', [CholloController::class, 'show'])->name('show');//Mostrar
+Route::get('/{id}/edit', [CholloController::class, 'edit'])->name('edit');//Editar chollo
+Route::put('/{id}', [CholloController::class, 'update'])->name('update');
+//Route::delete('/{id}');

@@ -16,24 +16,15 @@ class CholloController extends Controller
 
         //Muestra todos los chollos
         $chollos = Chollo::all();
-        return view('chollos.index', ['chollos'=>$chollos]);
+        return view('chollos.index', ['chollos' => $chollos]);
     }
 
-
-    /**
-     * Mostrar un chollo por id
-     */
-    public function show($id){
-        $chollo = Chollo::find($id);
-        $data['chollos'] = $chollo;
-        return view('chollo.show', $data);
-    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('chollo.form');
+        return view('chollos.create');
     }
 
     /**
@@ -50,16 +41,23 @@ class CholloController extends Controller
         $chollo->precio = $request->precio;
         $chollo->precio_descuento = $request->precio_descuento;
         $chollo->disponible = $request->disponible;
-        //hay que poner el id o no??
+
+        // Guardar el chollo en la base de datos
+        $chollo->save();
+
+        // Redirigir a la vista de listado de chollos
+        return redirect('/');
     }
 
     /**
      * Display the specified resource.
      */
-    /*public function show(Chollo $chollo)
+    public function show($id)
     {
-        //
-    }*/
+        $chollo = Chollo::find($id);
+        $data['chollos'] = $chollo;
+        return view('chollo.show', $data);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -67,7 +65,7 @@ class CholloController extends Controller
     public function edit($id)
     {
         $chollo = Chollo::find($id);
-        return view('chollo.form', array('chollo' => $chollo));
+        return view('chollos.edit', array('chollo' => $chollo));
     }
 
     /**
@@ -79,14 +77,16 @@ class CholloController extends Controller
 
         $chollo->titulo = $request->titulo;
         $chollo->descripcion = $request->descripcion;
-        $chollo->url = $request->descripcion;
+        $chollo->url = $request->url;
         $chollo->categoria = $request->categoria;
         $chollo->puntuacion = $request->puntuacion;
         $chollo->precio = $request->precio;
         $chollo->precio_descuento = $request->precio_descuento;
         $chollo->disponible = $request->disponible;
 
-        return redirect()->route('chollo.index');
+        $chollo->save();
+
+        return redirect('/');
     }
 
     /**
