@@ -20,4 +20,4 @@ Route::post('/', [CholloController::class, 'store'])->name('store');//Guardar ch
 Route::get('/{id}', [CholloController::class, 'show'])->name('show');//Mostrar
 Route::get('/{id}/edit', [CholloController::class, 'edit'])->name('edit');//Editar chollo
 Route::put('/{id}', [CholloController::class, 'update'])->name('update');
-//Route::delete('/{id}');
+Route::delete('/{id}', [CholloController::class, 'destroy'])->name('destroy');

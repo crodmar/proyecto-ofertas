@@ -55,8 +55,7 @@ class CholloController extends Controller
     public function show($id)
     {
         $chollo = Chollo::find($id);
-        $data['chollos'] = $chollo;
-        return view('chollo.show', $data);
+        return view('chollos.show', ['chollo' => $chollo]);
     }
 
     /**
@@ -96,6 +95,6 @@ class CholloController extends Controller
     {
         $chollo = Chollo::find($id);
         $chollo->delete();
-        return redirect()->route('chollo.index');
+        return redirect('/');
     }
 }

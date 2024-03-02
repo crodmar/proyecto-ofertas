@@ -26,7 +26,7 @@
         @section('navegacion')
         <div class="navegacion">
             <img src="{{ asset('img\oferta-especial.png') }}" alt="description of myimage">CholloOfertas
-            <a href="">Inicio</a>
+            <a href="{{ url('/') }}">Inicio</a>
             <a href="">Nuevos</a>
             <a href="">Destacados</a>
         </div>

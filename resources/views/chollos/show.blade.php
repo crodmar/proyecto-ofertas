@@ -4,9 +4,7 @@
 @section('header', 'Administración de chollos')
 
 @section('content')
-<a href="{{ route('create') }}">Crear chollo</a>
     <div>
-        @forelse($chollos as $chollo)
             <div>
                 Producto: {{ $chollo->titulo }}
                 Descripción: {{ $chollo->descripcion }}
@@ -17,10 +15,6 @@
                 {{ $chollo->precio_descuento }}
                 {{ $chollo->disponible }}
                 <img src="{{ asset('img/' . $chollo->id . '-chollo-ofertas.avif') }}">
-                <form action="{{ route('show', $chollo->id) }}" method="GET">
-                    <button type="submit">Ver</button>
-                </form>
-
                 <form action="{{ route('edit', $chollo->id) }}" method="GET">
                     <button type="submit">Editar</button>
                 </form>
@@ -30,11 +24,8 @@
                     @method('DELETE')
                     <button type="submit">Eliminar</button>
                 </form>
-
                 <br>
             </div>
-        @empty
-            No hay chollos disponibles.
-        @endforelse
+
     </div>
 @endsection
