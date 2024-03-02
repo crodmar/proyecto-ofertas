@@ -22,4 +22,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [CholloController::class, 'index']);
 
 //Comprobar si funciona más adelante
-//Route::resource('chollos', 'CholloController');
+Route::resource('chollos', 'CholloController');

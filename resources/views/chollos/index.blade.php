@@ -6,13 +6,21 @@
 @section('content')
     <div>
         @forelse($chollos as $chollo)
-            {{ $chollo->titulo }}
-            {{ $chollo->descripcion }}
-            {{ $chollo->url }}
-            {{ $chollo->categoria }}
-            {{ $chollo->puntuacion }}
-            {{ $chollo->precio }}
-            {{ $chollo->precio_descuento }}
+            <div>
+                Producto: {{ $chollo->titulo }}
+                Descripción: {{ $chollo->descripcion }}
+                URL: {{ $chollo->url }}
+                {{ $chollo->categoria }}
+                {{ $chollo->puntuacion }}
+                {{ $chollo->precio }}
+                {{ $chollo->precio_descuento }}
+                {{ $chollo->disponible }}
+                <img src="{{ asset('img/' . $chollo->id . '-chollo-ofertas.avif') }}">
+                <button>Ver</button>
+                <button>Editar</button>
+                <button>Eliminar</button>
+                <br>
+            </div>
         @empty
             No hay chollos disponibles.
         @endforelse
