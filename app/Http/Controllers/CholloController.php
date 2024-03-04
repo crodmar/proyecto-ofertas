@@ -40,7 +40,13 @@ class CholloController extends Controller
         $chollo->puntuacion = $request->puntuacion;
         $chollo->precio = $request->precio;
         $chollo->precio_descuento = $request->precio_descuento;
-        $chollo->disponible = $request->disponible;
+        
+        if($request->disponible == 'sí' || $request->disponible == 'Sí' ||
+         $request->disponible == 'si' || $request->disponible == 'Si'){
+            $chollo->disponible = true;
+        } else if($request->disponible == 'no' || $request->disponible == 'No'){
+            $chollo->disponible = false;
+        }
 
         // Guardar el chollo en la base de datos
         $chollo->save();

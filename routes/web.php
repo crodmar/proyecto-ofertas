@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [CholloController::class, 'index']);//Redirige al index pasando por el controlador
-Route::get('/create', [CholloController::class, 'create'])->name('create');//Crear chollo
-Route::post('/', [CholloController::class, 'store'])->name('store');//Guardar chollo
-Route::get('/{id}', [CholloController::class, 'show'])->name('show');//Mostrar
-Route::get('/{id}/edit', [CholloController::class, 'edit'])->name('edit');//Editar chollo
-Route::put('/{id}', [CholloController::class, 'update'])->name('update');
-Route::delete('/{id}', [CholloController::class, 'destroy'])->name('destroy');
+Route::get('/create', [CholloController::class, 'create'])->name('create');//formulario para crear chollo
+Route::post('/', [CholloController::class, 'store'])->name('store');//guardar chollo
+Route::get('/{id}', [CholloController::class, 'show'])->name('show');//muestra 1
+Route::get('/{id}/edit', [CholloController::class, 'edit'])->name('edit');//formulario para editar chollo
+Route::put('/{id}', [CholloController::class, 'update'])->name('update');//Actualiza un chollo
+Route::delete('/{id}', [CholloController::class, 'destroy'])->name('destroy');//Elimina 1

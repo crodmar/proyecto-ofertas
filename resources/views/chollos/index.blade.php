@@ -1,40 +1,46 @@
 @extends('layouts.master')
 
 @section('title', 'Listado de chollos')
-@section('header', 'Administración de chollos')
 
 @section('content')
-<a href="{{ route('create') }}">Crear chollo</a>
+<div class="container">
+    <a href="{{ route('create') }}" class="btn btn-success mb-3">Crear chollo</a>
     <div>
         @forelse($chollos as $chollo)
-            <div>
-                Producto: {{ $chollo->titulo }}
-                Descripción: {{ $chollo->descripcion }}
-                URL: {{ $chollo->url }}
-                {{ $chollo->categoria }}
-                {{ $chollo->puntuacion }}
-                {{ $chollo->precio }}
-                {{ $chollo->precio_descuento }}
-                {{ $chollo->disponible }}
-                <img src="{{ asset('img/' . $chollo->id . '-chollo-ofertas.avif') }}">
-                <form action="{{ route('show', $chollo->id) }}" method="GET">
-                    <button type="submit">Ver</button>
-                </form>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h5 class="card-title border-bottom pb-2">{{ $chollo->titulo }}</h5>
+                            <p class="card-text"><b>Descripción:</b> {{ $chollo->descripcion }}</p>
+                            <p class="card-text"><b>Precio con descuento:</b>
+                                <span class="text-danger">{{ $chollo->precio_descuento }} €</span>
+                                <img src="{{ asset('img/fuego.gif') }}" class="img" style="max-height: 20px;"></p>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{{ asset('img/' . $chollo->id . '-chollo-ofertas.avif') }}" class="img-thumbnail" alt="Imagen del chollo" style="max-height: 300px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-left">
+                    <form action="{{ route('show', $chollo->id) }}" method="GET" class="d-inline">
+                        <button type="submit" class="btn btn-info mr-2">Ver</button>
+                    </form>
 
-                <form action="{{ route('edit', $chollo->id) }}" method="GET">
-                    <button type="submit">Editar</button>
-                </form>
+                    <form action="{{ route('edit', $chollo->id) }}" method="GET" class="d-inline">
+                        <button type="submit" class="btn btn-warning mr-2">Editar</button>
+                    </form>
 
-                <form action="{{ route('destroy', $chollo->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Eliminar</button>
-                </form>
-
-                <br>
+                    <form action="{{ route('destroy', $chollo->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </div>
             </div>
         @empty
-            No hay chollos disponibles.
+            <div class="alert alert-warning">No hay chollos disponibles.</div>
         @endforelse
     </div>
+</div>
 @endsection
