@@ -27,6 +27,7 @@
                 </div>
             </div>
         </nav>
+        <br/>
         @show
 
         <div class="container">
@@ -34,7 +35,7 @@
         </div>
 
         @section('footer')
-        <footer class="footer mt-auto py-3 bg-light">
+        <footer class="footer mt-auto py-3 bg-light text-center">
             <div class="container">
                 <span class="text-muted">©CholloOfertas 2024</span>
             </div>

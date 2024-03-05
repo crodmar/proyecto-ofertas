@@ -4,7 +4,9 @@
 
 @section('content')
 <div class="container">
-    <a href="{{ route('create') }}" class="btn btn-success mb-3">Crear chollo</a>
+    <div class="text-center mb-3">
+        <a href="{{ route('create') }}" class="btn btn-success">Crear chollo</a>
+    </div>
     <div>
         @forelse($chollos as $chollo)
             <div class="card mb-3">
@@ -14,7 +16,7 @@
                             <h5 class="card-title border-bottom pb-2">{{ $chollo->titulo }}</h5>
                             <p class="card-text"><b>Descripción:</b> {{ $chollo->descripcion }}</p>
                             <p class="card-text"><b>Precio con descuento:</b>
-                                <span class="text-danger">{{ $chollo->precio_descuento }} €</span>
+                                <span class="text-danger"><b>{{ $chollo->precio_descuento }} €</b></span>
                                 <img src="{{ asset('img/fuego.gif') }}" class="img" style="max-height: 20px;"></p>
                         </div>
                         <div class="col-md-4">

@@ -19,7 +19,7 @@
                         <p class="card-text"><b>Puntuación:</b> {{ $chollo->puntuacion }}</p>
                         <p class="card-text"><b>Precio:</b> <del style="color: gray;">{{ $chollo->precio }} €</del></p>
                         <p class="card-text"><b>Precio con descuento:</b>
-                            <span class="text-danger">{{ $chollo->precio_descuento }} €</span>
+                            <span class="text-danger"><b>{{ $chollo->precio_descuento }} €</b></span>
                         </p>
                     </div>
                 </div>
