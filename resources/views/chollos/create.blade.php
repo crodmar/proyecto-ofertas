@@ -13,35 +13,56 @@
                 @csrf
                 <div class="form-group">
                     <label for="titulo">Producto:</label>
-                    <input type="text" class="form-control" name="titulo" value="{{ $chollo->titulo ?? '' }}">
+                    <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}">
+                    @error('titulo')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción:</label>
-                    <input type="text" class="form-control" name="descripcion" value="{{ $chollo->descripcion ?? '' }}">
+                    <input type="text" class="form-control" name="descripcion" value="{{ old('descripcion') }}">
+                    @error('descripcion')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="url">URL:</label>
-                    <input type="text" class="form-control" name="url" value="{{ $chollo->url ?? '' }}">
+                    <input type="text" class="form-control" name="url" value="{{ old('url') }}">
+                    @error('url')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="categoria">Categoría:</label>
-                    <input type="text" class="form-control" name="categoria" value="{{ $chollo->categoria ?? '' }}">
+                    <input type="text" class="form-control" name="categoria" value="{{ old('categoria') }}">
+                    @error('categoria')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="puntuacion">Puntuación:</label>
-                    <input type="text" class="form-control" name="puntuacion" value="{{ $chollo->puntuacion ?? '' }}">
+                    <input type="text" class="form-control" name="puntuacion" value="{{ old('puntuacion') }}">
+                    @error('puntuacion')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="precio">Precio:</label>
-                    <input type="text" class="form-control" name="precio" value="{{ $chollo->precio ?? '' }}">
+                    <input type="text" class="form-control" name="precio" value="{{ old('precio') }}">
+                    @error('precio')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
-                    <label for="precio_descuento">Precio descuento:</label>
-                    <input type="text" class="form-control" name="precio_descuento" value="{{ $chollo->precio_descuento ?? '' }}">
+                    <label for="precio_descuento">Precio con descuento:</label>
+                    <input type="text" class="form-control" name="precio_descuento" value="{{ old('precio_descuento') }}">
+                    @error('precio_descuento')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="disponible">Disponible:</label>
-                    <input type="text" class="form-control" name="disponible" value="{{ $chollo->disponible ?? '' }}">
+                    <input type="checkbox" name="disponible" value="1" {{ old('disponible') ? 'checked' : '' }}> Sí
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success">Guardar</button>

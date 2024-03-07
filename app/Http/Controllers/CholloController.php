@@ -10,10 +10,6 @@ class CholloController extends Controller
 {
     public function index()
     {
-        /*$chollos = Chollo::orderBy('titulo')->paginate(3);//si no pongo paginate no sale ninguno??
-        //$chollos = Chollo::orderBy('titulo');
-        return view('chollos.index', compact('chollos'));*/
-
         //Muestra todos los chollos
         $chollos = Chollo::all();
         return view('chollos.index', ['chollos' => $chollos]);
@@ -32,24 +28,37 @@ class CholloController extends Controller
      */
     public function store(Request $request)
     {
-        $chollo = new Chollo();
-        $chollo->titulo = $request->titulo;
-        $chollo->descripcion = $request->descripcion;
-        $chollo->url = $request->descripcion;
-        $chollo->categoria = $request->categoria;
-        $chollo->puntuacion = $request->puntuacion;
-        $chollo->precio = $request->precio;
-        $chollo->precio_descuento = $request->precio_descuento;
-        
-        if($request->disponible == 'sí' || $request->disponible == 'Sí' ||
-         $request->disponible == 'si' || $request->disponible == 'Si'){
-            $chollo->disponible = true;
-        } else if($request->disponible == 'no' || $request->disponible == 'No'){
-            $chollo->disponible = false;
-        }
+        $request->validate([
+            'titulo' => 'required',
+            'descripcion' => 'required',
+            'url' => 'required',
+            'categoria' => 'required',
+            'puntuacion' => 'required',
+            'precio' => 'required',
+            'precio_descuento' => 'required'
+        ], [
+            'titulo.required' => 'El título es obligatorio',
+            'descripcion.required' => 'La descripción es obligatoria',
+            'url.required' => 'La URL es obligatoria',
+            'categoria.required' => 'La categoría es obligatoria',
+            'puntuacion.required' => 'La puntuación es obligatoria',
+            'precio.required' => 'El precio es obligatorio',
+            'precio_descuento.required' => 'El precio con descuento es obligatorio'
+        ]);
 
-        // Guardar el chollo en la base de datos
-        $chollo->save();
+        //Convertir a boolean
+        $disponible = $request->has('disponible');
+
+        Chollo::create([
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'url' => $request->url,
+            'categoria' => $request->categoria,
+            'puntuacion' => $request->puntuacion,
+            'precio' => $request->precio,
+            'precio_descuento' => $request->precio_descuento,
+            'disponible' => $disponible
+        ]);
 
         // Redirigir a la vista de listado de chollos
         return redirect('/');
@@ -78,18 +87,41 @@ class CholloController extends Controller
      */
     public function update($id, Request $request)
     {
-        $chollo = Chollo::find($id);
+        $request->validate([
+            'titulo' => 'required',
+            'descripcion' => 'required',
+            'url' => 'required',
+            'categoria' => 'required',
+            'puntuacion' => 'required',
+            'precio' => 'required',
+            'precio_descuento' => 'required'
+        ], [
+            'titulo.required' => 'El título es obligatorio',
+            'descripcion.required' => 'La descripción es obligatoria',
+            'url.required' => 'La URL es obligatoria',
+            'categoria.required' => 'La categoría es obligatoria',
+            'puntuacion.required' => 'La puntuación es obligatoria',
+            'precio.required' => 'El precio es obligatorio',
+            'precio_descuento.required' => 'El precio con descuento es obligatorio'
+        ]);
 
-        $chollo->titulo = $request->titulo;
-        $chollo->descripcion = $request->descripcion;
-        $chollo->url = $request->url;
-        $chollo->categoria = $request->categoria;
-        $chollo->puntuacion = $request->puntuacion;
-        $chollo->precio = $request->precio;
-        $chollo->precio_descuento = $request->precio_descuento;
-        $chollo->disponible = $request->disponible;
+        //Buscar el chollo
+        $chollo = Chollo::findOrFail($id);
 
-        $chollo->save();
+        //Convertir a boolean
+        $disponible = $request->has('disponible');
+
+        $chollo->update([
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'url' => $request->url,
+            'categoria' => $request->categoria,
+            'puntuacion' => $request->puntuacion,
+            'precio' => $request->precio,
+            'precio_descuento' => $request->precio_descuento,
+            'disponible' => $disponible
+        ]);
+        //$chollo->update($request->all());
 
         return redirect('/');
     }

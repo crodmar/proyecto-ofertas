@@ -18,6 +18,7 @@
                             <p class="card-text"><b>Precio con descuento:</b>
                                 <span class="text-danger"><b>{{ $chollo->precio_descuento }} €</b></span>
                                 <img src="{{ asset('img/fuego.gif') }}" class="img" style="max-height: 20px;"></p>
+                            <p class="card-text"><b>Disponible:</b> {{ $chollo->disponible ? 'Sí' : 'No' }}</p>
                         </div>
                         <div class="col-md-4">
                             <img src="{{ asset('img/' . $chollo->id . '-chollo-ofertas.avif') }}" class="img-thumbnail" alt="Imagen del chollo" style="max-height: 300px;">

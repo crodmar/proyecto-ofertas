@@ -19,8 +19,10 @@
                         <p class="card-text"><b>Puntuación:</b> {{ $chollo->puntuacion }}</p>
                         <p class="card-text"><b>Precio:</b> <del style="color: gray;">{{ $chollo->precio }} €</del></p>
                         <p class="card-text"><b>Precio con descuento:</b>
-                            <span class="text-danger"><b>{{ $chollo->precio_descuento }} €</b></span>
+                            <span class="text-danger"><b>{{ $chollo->precio_descuento }} €</b>
+                            <img src="{{ asset('img/fuego.gif') }}" class="img" style="max-height: 20px;"></span>
                         </p>
+                        <p class="card-text"><b>Disponible:</b> {{ $chollo->disponible ? 'Sí' : 'No' }}</p>
                     </div>
                 </div>
             </div>
